@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?> 
+ <!-- 
+ ~ Copyright (c) 2009 Andrew <andrewdubya@gmail> 
+ ~ Copyright (c) 2009 Edu Zamora <edu.zasu@gmail.com> 
+ ~ Copyright (c) 2009 Daniel Svaerd <daniel.svard@gmail.com> 
+ ~ Copyright (c) 2009 Nicolas Raoul <nicolas.raoul@gmail.com> 
+ ~ Copyright (c) 2010 Norbert Nagold <norbert.nagold@gmail.com> 
+ ~ This program is free software; you can redistribute it and/or modify it under 
+ ~ the terms of the GNU General Public License as published by the Free Software 
+ ~ Foundation; either version 3 of the License, or (at your option) any later 
+ ~ version. 
+ ~ 
+ ~ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+ ~ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ ~ PARTICULAR PURPOSE. See the GNU General Public License for more details. 
+ ~ 
+ ~ You should have received a copy of the GNU General Public License along with 
+ ~ this program.  If not, see <http://www.gnu.org/licenses/>. 
+ --> 
+ 
+<!--
+~ Copyright (c) 2009 Casey Link <unnamedrambler@gmail.com>
+~
+~ This program is free software; you can redistribute it and/or modify it under
+~ the terms of the GNU General Public License as published by the Free Software
+~ Foundation; either version 3 of the License, or (at your option) any later
+~ version.
+~
+~ This program is distributed in the hope that it will be useful, but WITHOUT ANY
+~ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+~ PARTICULAR PURPOSE. See the GNU General Public License for more details.
+~
+~ You should have received a copy of the GNU General Public License along with
+~ this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string-array name="error_reporting_choice_labels">
+        <item>ᱥᱟᱵᱩᱵᱮᱲᱟ ᱨᱤᱯᱚᱴ ᱢᱮ</item>
+        <item>ᱟᱞᱚ ᱨᱤᱯᱚᱴ ᱟᱢ</item>
+        <item>ᱠᱩᱞᱤᱧ ᱢᱮ</item>
+    </string-array>
+    <string-array name="gestures_labels">
+        <item>ᱪᱮᱫ ᱟᱹᱞᱚ ᱪᱤᱠᱟᱹ</item>
+        <item>ᱛᱮᱞᱟ ᱫᱮᱠᱷᱟᱣᱢᱮ</item>
+        <item>ᱛᱮᱞᱟ ᱵᱚᱴᱚᱱ ᱑</item>
+        <item>ᱛᱮᱞᱟ ᱵᱚᱴᱚᱱ ᱒</item>
+        <item>ᱛᱮᱞᱟ ᱵᱚᱴᱚᱱ ᱓</item>
+        <item>ᱛᱮᱞᱟ ᱵᱚᱴᱚᱱ ᱔</item>
+        <item>ᱛᱮᱞᱟ ᱢᱚᱱᱡᱩᱨ (ᱦᱟᱹᱨᱤᱭᱟᱹᱲ)</item>
+        <item>ᱢᱚᱱᱡᱩᱨ ᱠᱷᱚᱱ ᱵᱮᱥ ᱛᱮᱞᱟ ᱮᱢᱚᱜ ᱢᱮ</item>
+        <item>ᱢᱟᱲᱟᱝᱟᱜ</item>
+        <item>ᱠᱷᱟᱴᱚ ᱵᱤᱪᱟᱹᱨ ᱥᱟᱯᱲᱟᱣ</item>
+        <item>ᱠᱷᱟᱴᱚ ᱵᱤᱪᱟᱹᱨ ᱴᱮᱜ ᱢᱮ</item>
+        <item>ᱠᱷᱟᱴᱚ ᱵᱤᱪᱟᱹᱨ ᱪᱤᱱᱦᱟᱹᱭ ᱢᱮ</item>
+        <item>ᱪᱤᱱᱦᱟ ᱧᱮᱞᱢᱮ</item>
+        <item>ᱠᱟᱰ ᱛᱚᱯᱟᱭ ᱢᱮ</item>
+        <item>ᱠᱟᱰ ᱵᱚᱸᱫᱚᱭ ᱢᱮ</item>
+        <item>ᱠᱷᱟᱴᱚ ᱵᱤᱪᱟᱹᱨ ᱜᱮᱫ ᱜᱤᱰᱤ</item>
+        <item>ᱢᱮᱰᱤᱭᱟ ᱪᱟᱹᱞᱩᱭ ᱢᱮ</item>
+        <item>ᱪᱮᱫᱚᱜ ᱵᱚᱸᱫ ᱛᱷᱟᱲ</item>
+        <item>ᱠᱷᱟᱴᱚ ᱵᱤᱪᱟᱹᱨ ᱛᱚᱯᱟᱭ ᱢᱮ</item>
+        <item>ᱠᱷᱟᱴᱚ ᱵᱤᱪᱟᱹᱨ ᱵᱚᱸᱫᱚᱭ ᱢᱮ</item>
+        <item>ᱟᱨᱟᱜ ᱯᱚᱛᱠᱟ ᱴᱚᱜᱟ.ᱞ</item>
+        <item>ᱜᱮᱨᱩᱟ ᱯᱚᱛᱠᱟ ᱴᱚᱜᱟᱹᱞ</item>
+        <item>ᱦᱟᱹᱨᱤᱭᱟᱲ ᱯᱚᱛᱠᱟ ᱴᱚᱜᱟᱹᱞ</item>
+        <item>ᱞᱤᱞ ᱯᱚᱛᱠᱟ ᱴᱚᱜᱟᱹᱞ</item>
+        <item>ᱯᱚᱛᱠᱟ ᱚᱪᱚᱜ ᱢᱮ</item>
+        <item>ᱥᱟᱠᱟᱢ ᱪᱮᱛᱟᱱ</item>
+        <item>ᱥᱟᱠᱟᱢ ᱞᱟᱛᱟᱨ</item>
+    </string-array>
+    <string-array name="leech_action_labels">
+        <item>ᱠᱟᱰ ᱵᱚᱸᱫᱚᱭ ᱢᱮ</item>
+        <item>ᱴᱮᱜ ᱜᱮ</item>
+    </string-array>
+    <string-array name="new_order_labels">
+        <item>ᱨᱮᱱᱰᱚᱢ ᱛᱮ ᱱᱟᱶᱟ ᱠᱟᱰ ᱛᱷᱟᱨ</item>
+        <item>ᱛᱷᱟᱨ ᱨᱮ ᱱᱟᱶᱟ ᱠᱟᱰ ᱥᱮᱞᱮᱫ ᱮᱱᱟ</item>
+    </string-array>
+    <string-array name="cram_deck_conf_order_labels">
+        <item>ᱢᱟᱨᱮ ᱧᱮᱞ ᱢᱟᱲᱟᱝ</item>
+        <item>ᱨᱮᱱᱰᱚᱢ</item>
+        <item>ᱚᱠᱛᱚ ᱛᱟᱞᱟ ᱰᱷᱮᱨᱚᱜ ᱠᱟᱱᱟ</item>
+        <item>ᱚᱠᱛᱚ ᱛᱟᱞᱟ ᱠᱚᱢᱚᱜ ᱠᱟᱱᱟ</item>
+        <item>ᱡᱟᱥᱛᱤ ᱫᱚᱱᱟᱜ</item>
+        <item>ᱛᱷᱟᱨ ᱥᱮᱞᱮᱫ ᱮᱱᱟ</item>
+        <item>ᱮᱢᱚᱜ ᱥᱚᱢᱚᱭ ᱛᱷᱟᱨ ᱢᱮ</item>
+        <item>ᱱᱮᱛᱟᱨᱟᱜ ᱥᱮᱞᱮᱫᱟᱜ ᱢᱟᱲᱟᱝ</item>
+        <item>ᱥᱟᱯᱮᱠᱷᱤᱠ ᱜᱷᱟᱹᱲᱤᱡ</item>
+    </string-array>
+    <string-array name="add_to_cur_labels">
+        <item>ᱱᱤᱛᱚᱜᱟᱜ ᱰᱮᱠ ᱵᱮᱵᱷᱟᱨ ᱢᱮ</item>
+        <item>ᱠᱷᱟᱴᱚ ᱵᱤᱪᱟᱹᱨ ᱯᱨᱚᱠᱟᱨ ᱧᱮᱞᱠᱟᱛᱮ ᱪᱤᱱᱛᱟᱭ ᱢᱮ</item>
+    </string-array>
+    <string-array name="new_spread_labels">
+        <item>ᱱᱟᱶᱟ ‌ᱠᱟᱰ ᱟᱨ ᱫᱩᱦᱲᱟ‌ ᱧᱮᱞ ᱠᱚ ᱢᱮᱥᱟᱭ ᱢᱮ</item>
+        <item>ᱫᱩᱦᱲᱟ ᱧᱮᱞ ᱛᱟᱭᱚᱢ ᱱᱟᱶᱟ ᱠᱟᱰᱟ</item>
+        <item>ᱫᱩᱦᱲᱟ ᱧᱮᱞ ᱢᱟᱲᱟᱝ ᱨᱮ ᱱᱟᱶᱟ ᱠᱟᱰ ᱧᱮᱞ</item>
+    </string-array>
+    <string-array name="override_font_labels">
+        <item>ᱪᱮᱫ ᱦᱚᱸ ᱪᱤᱠᱤ ᱵᱟᱹᱱᱩᱜᱼᱟ ᱱᱚᱶᱟ ᱯᱷᱞᱟᱥᱠᱟᱰ ᱞᱟᱹᱜᱤᱫ</item>
+        <item>ᱡᱷᱚᱛᱚᱵᱮᱲᱟ</item>
+    </string-array>
+    <string-array name="day_theme_labels">
+        <item>ᱟᱨᱥᱟᱞ</item>
+        <item>ᱥᱟᱯᱷᱟ</item>
+    </string-array>
+    <string-array name="night_theme_labels">
+        <item>ᱦᱮᱸᱫᱮ</item>
+        <item>ᱧᱩᱛ</item>
+    </string-array>
+</resources>

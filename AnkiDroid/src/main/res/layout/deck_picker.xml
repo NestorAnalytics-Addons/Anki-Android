@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                     android:id="@+id/root_layout"
+                                                     android:layout_width="fill_parent"
+                                                     android:layout_height="fill_parent">
+
+
+    <RelativeLayout
+
+        android:id="@+id/deckpicker_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <include layout="@layout/toolbar" />
+
+        <LinearLayout
+            android:elevation="5dp"
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="25dp"
+            android:layout_below="@id/toolbar"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_rectangle_white_no_border"
+            android:layout_height="wrap_content">
+
+            <com.ichi2.ui.TextInputEditField
+                android:id="@+id/search_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:layout_marginLeft="15dp"
+                android:hint="Search"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                />
+
+            <ImageButton
+                android:id="@+id/search_button"
+                android:layout_width="25dp"
+                android:layout_gravity="center|center_vertical"
+                android:layout_height="25dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/ic_search"/>
+
+        </LinearLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/pull_to_sync_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/today_stats_text_view"
+            android:layout_below="@+id/search">
+
+            <RelativeLayout
+                android:id="@+id/deck_picker_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@+id/toolbar"
+                android:id="@+id/files"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:drawSelectorOnTop="true"
+                android:fastScrollEnabled="true"
+                android:focusable="true"
+                android:paddingBottom="72dp"
+                android:scrollbars="vertical" />
+            </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/today_stats_text_view"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="4dp"
+            android:gravity="center"/>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </RelativeLayout>
+
+    <include layout="@layout/anki_progress"/>
+    <include layout="@layout/floating_add_button"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

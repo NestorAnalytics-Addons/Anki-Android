@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?> 
+ <!-- 
+ ~ Copyright (c) 2009 Andrew <andrewdubya@gmail> 
+ ~ Copyright (c) 2009 Edu Zamora <edu.zasu@gmail.com> 
+ ~ Copyright (c) 2009 Daniel Svaerd <daniel.svard@gmail.com> 
+ ~ Copyright (c) 2009 Nicolas Raoul <nicolas.raoul@gmail.com> 
+ ~ Copyright (c) 2010 Norbert Nagold <norbert.nagold@gmail.com> 
+ ~ This program is free software; you can redistribute it and/or modify it under 
+ ~ the terms of the GNU General Public License as published by the Free Software 
+ ~ Foundation; either version 3 of the License, or (at your option) any later 
+ ~ version. 
+ ~ 
+ ~ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+ ~ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ ~ PARTICULAR PURPOSE. See the GNU General Public License for more details. 
+ ~ 
+ ~ You should have received a copy of the GNU General Public License along with 
+ ~ this program.  If not, see <http://www.gnu.org/licenses/>. 
+ --> 
+ 
+<!--
+~ Copyright (c) 2009 Andrew <andrewdubya@gmail>
+~ Copyright (c) 2009 Edu Zamora <edu.zasu@gmail.com>
+~ Copyright (c) 2009 Daniel Svärd <daniel.svard@gmail.com>
+~ Copyright (c) 2009 Nicolas Raoul <nicolas.raoul@gmail.com>
+~ Copyright (c) 2010 Norbert Nagold <norbert.nagold@gmail.com>
+~
+~ This program is free software; you can redistribute it and/or modify it under
+~ the terms of the GNU General Public License as published by the Free Software
+~ Foundation; either version 3 of the License, or (at your option) any later
+~ version.
+~
+~ This program is distributed in the hope that it will be useful, but WITHOUT ANY
+~ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+~ PARTICULAR PURPOSE. See the GNU General Public License for more details.
+~
+~ You should have received a copy of the GNU General Public License along with
+~ this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+    <!-- How to format a percentage shown in the summary field of a preference -->
+    <string name="preference_summary_percentage">XXX%</string>
+    <!-- Navigation drawer strings -->
+    <string name="drawer_open">Zijmenu openen</string>
+    <string name="drawer_close">Zijmenu sluiten</string>
+    <string name="CardEditorLaterMessage">Informatie opgeslagen voor later</string>
+    <string name="CardEditorCardDeck">Kaartenset:</string>
+    <string name="CardEditorNoteDeck">Set:</string>
+    <string name="CardEditorModel">Type:</string>
+    <string name="CardEditorTags">Kenmerken: %1$s</string>
+    <string name="CardEditorCards">Kaarten: %1$s</string>
+    <string name="tag_name">Labelnaam</string>
+    <string name="add_new_filter_tags">Labels toevoegen/filteren</string>
+    <string name="add_tag">Label toevoegen</string>
+    <string name="check_all_tags">Alle labels selecteren/deselecteren</string>
+    <string name="filter_tags">Op labels filteren</string>
+    <string name="no_tags">Je hebt nog geen labels toegevoegd.</string>
+    <string name="sdcard_missing_message">De SD-kaart is niet beschikbaar omdat ze in gebruik is voor USB-opslag. Ontkoppel de USB om toegang te krijgen tot uw sets.</string>
+    <string name="updated_version">Geüpdatet naar versie %s</string>
+    <!-- Reviewer.java -->
+    <string name="save_whiteboard">Save whiteboard</string>
+    <string name="enable_whiteboard">Whiteboard inschakelen</string>
+    <string name="disable_whiteboard">Whiteboard uitschakelen</string>
+    <string name="show_whiteboard">Toon het schrijfbord</string>
+    <string name="hide_whiteboard">Verberg het schrijfbord</string>
+    <string name="clear_whiteboard">Schrijfbord schoonvegen</string>
+    <string name="replay_audio">Audio herhalen</string>
+    <string name="toggle_mic_tool_bar">Uitspraak controleren</string>
+    <string name="leech_suspend_notification">Kaart gemarkeerd als moeilijk en uitgesteld</string>
+    <string name="leech_notification">Kaart gemarkeerd als moeilijk</string>
+    <string name="corrupt_font">Beschadigd lettertypebestand %s</string>
+    <string name="webview_crash_unknown">Onbekende fout</string>
+    <string name="webview_crash_unknwon_detailed">Dit was veroorzaakt door een interne fout in de WebView</string>
+    <string name="webview_crash_oom">Onvoldoende Geheugen</string>
+    <string name="webview_crash_oom_details">De WebView is beëindigt door het systeem. Dit gebeurt gewoonlijk wanneer de applicatie onvoldoende geheugen heeft, vaak door grote lettertypen of media.</string>
+    <string name="webview_crash_nonfatal">WebView renderer is gecrasht. Oorzaak: %s</string>
+    <string name="webview_crash_fatal">Fatale fout: WebView renderer is gecrasht. Oorzaak: %s</string>
+    <string name="webview_crash_loop_dialog_title">Systeem WebView Rendering Mislukking.</string>
+    <string name="webview_crash_loop_dialog_content">Systeem WebView kon de kaart \'%1$s\' niet renderen.\n%2$s</string>
+    <!-- Browser -->
+    <string-array name="browser_column1_headings">
+        <item>Vraag</item>
+        <item>Sorteerveld</item>
+    </string-array>
+    <string-array name="browser_column2_headings">
+        <item>Antwoord</item>
+        <item>Kaart</item>
+        <item>Set</item>
+        <item>Opmerking</item>
+        <item>Vraag</item>
+        <item>Labels</item>
+        <item>Missers</item>
+        <item>Overhoringen</item>
+        <item>Interval</item>
+        <item>Gemak</item>
+        <item>Deadline</item>
+        <item>Card Modified</item>
+        <item>Gemaakt</item>
+        <item>Note Modified</item>
+    </string-array>
+    <!-- Custom study options -->
+    <string name="custom_study_increase_new_limit">Modify today’s new card limit</string>
+    <string name="custom_study_increase_review_limit">Modify today’s review card limit</string>
+    <string name="custom_study_review_forgotten">Vergeten kaarten herhalen</string>
+    <string name="custom_study_review_ahead">Herhaal vooruit</string>
+    <string name="custom_study_random_selection">Een willekeurige selectie van kaarten studeren</string>
+    <string name="custom_study_preview_new">Geef voorbeeld van nieuwe kaarten</string>
+    <string name="custom_study_limit_tags">Beperken tot bepaalde tags</string>
+    <!-- Card editor -->
+    <string name="cardeditor_title_add_note">Kaart toevoegen</string>
+    <string name="cardeditor_title_edit_card">Kaart bewerken</string>
+    <string name="discard_unsaved_changes">Afsluiten en huidige invoer verloren laten gaan?</string>
+    <string name="note_editor_no_cards_created">Geen kaarten aangemaakt. Vul alstublieft meer velden in</string>
+    <string name="note_editor_no_first_field">Het eerste veld is leeg</string>
+    <string name="note_editor_no_cloze_delations">Dit type notitie moet invuloefeningen bevatten.</string>
+    <string name="note_editor_no_cards_created_all_fields">Het huidige type memo produceerde geen kaarten.\nKies alstublieft een ander type memo, of klik op \'Kaarten\' en voeg een veld substitutie toe.</string>
+    <string name="note_editor_insert_cloze_no_cloze_note_type">Cloze deletions will only work on a Cloze note type</string>
+    <string name="saving_facts">Kaart opslaan</string>
+    <string name="saving_model">Memotype opslaan</string>
+    <string name="add">Toevoegen</string>
+    <string name="save">Opslaan</string>
+    <string name="close">Sluiten</string>
+    <string name="select">Selecteren</string>
+    <string name="saving_changes">Wijzigingen worden bewaard...</string>
+    <string name="reordering_cards">Kaarten herschikken...</string>
+    <string name="field_remapping">%1$s (van “%2$s”)</string>
+    <string name="confirm_map_cards_to_nothing">De kaarten toegewezen aan niets zullen worden verwijderd. Als een notitie geen resterende kaarten heeft, zullen zij verloren gaan. Weet u zeker dat u wilt doorgaan?</string>
+    <plurals name="timebox_reached">
+        <item quantity="one">%1$d kaart geoefend in %2$s</item>
+        <item quantity="other">%1$d kaarten geoefend in %2$s</item>
+    </plurals>
+    <!-- minutes used in \'[studied in] x minutes\' context, causing inflexion in some languages -->
+    <plurals name="in_minutes">
+        <item quantity="one">%1$d minuut</item>
+        <item quantity="other">%1$d minuten</item>
+    </plurals>
+    <string name="studyoptions_welcome_title">Welkom bij AnkiDroid</string>
+    <string name="fact_adder_intent_title">Ankidroid kaart</string>
+    <string name="note_editor_add_note">Voeg memo toe</string>
+    <string name="note_editor_copy_note">Memo kopiëren</string>
+    <string name="card_editor_copy_card">Kopieer kaart</string>
+    <string name="card_editor_reposition_card">Verplaatsen</string>
+    <string name="card_editor_reset_card">Vooruitgang resetten</string>
+    <string name="card_editor_reschedule_card">Opnieuw inplannen</string>
+    <string name="card_editor_preview_card">Voorbeeld</string>
+    <string name="error_insufficient_memory">Werking verhinderd vanwege onvoldoende beschikbaar geheugen op uw toestel</string>
+    <string name="rename">Naam wijzigen</string>
+    <string name="default_conf_delete_error">De standaard \"optiesgroep\" kan niet verwijderd worden</string>
+    <plurals name="factadder_cards_added">
+        <item quantity="one">%d kaart toegevoegd</item>
+        <item quantity="other">%d kaarten toegevoegd</item>
+    </plurals>
+    <string name="help_title">Help</string>
+    <string name="check_db">Database controleren</string>
+    <string name="check_media">Media controleren</string>
+    <string name="empty_cards">Lege kaarten zoeken</string>
+    <string name="check_db_message">De databank wordt gecontroleerd.\nEven geduld alstublieft...</string>
+    <string name="empty_card_warning">Deze kaart is leeg. Gebruik de optie \"Lege kaarten zoeken\" in het menu op het scherm van de lijst met leersets.</string>
+    <string name="unknown_type_field_warning">Type antwoord: onbekend veld %s</string>
+    <string name="delete_deck">Leerset verwijderen...\nEven wachten.</string>
+    <string name="show_hint">Toon %s</string>
+    <string name="info_rate">Beoordeel AnkiDroid</string>
+    <string name="col_load_failed">Laden van collectie mislukt.\nKlik \'terug\' om AnkiDroid te sluiten.</string>
+    <string name="import_title">Importeren</string>
+    <string name="import_select_title">Kies een bestand om te importeren</string>
+    <string name="import_message_add">Toevoegen</string>
+    <string name="import_message_replace_confirm">Deze actie zal uw bestaande collectie verwijderen en vervangen door de data van bestand %s. Bent u zeker?</string>
+    <string name="import_message_add_confirm">“%s” aan de collectie toevoegen? Dit kan lang duren</string>
+    <string name="import_log_no_apkg">Dit is geen geldig Anki-pakketbestand</string>
+    <string name="import_log_failed_unzip">Fout bij het uitpakken van apkg: %s</string>
+    <string name="import_log_failed_copy_to">Fout bij het kopiëren van apkg naar %s</string>
+    <string name="import_log_failed_validate">apkg-validatie mislukt</string>
+    <string name="import_log_insufficient_space">Er is niet genoeg ruimte om het pakket uit te pakken. %1$d vereist, beschikbare %2$d</string>
+    <string name="import_log_file_cache_cleared">Fout bij het importeren van het bestand, waarschijnlijk een cache die tijdens de verwerking wordt gewist.\nGelieve opnieuw te proberen</string>
+    <string name="import_succeeded_but_check_database">Het importeren van gegevens is gelukt, maar de opruiming na de import is mislukt. Voer later de databasecontrole uit. Kernoorzaak: %s</string>
+    <string name="import_error_unhandled_request">Kan importverzoek niet verwerken</string>
+    <string name="import_error_exception">Pakket importeren mislukt\n\n%s</string>
+    <string name="import_error_not_apkg_extension">Bestandsnaam “%s” heeft geen .apkg of .colpkg-extensie</string>
+    <string name="import_error_load_imported_database">Anki Database (.anki2) vervangingen worden nog niet ondersteund. Zie alstublieft de handleiding voor vervangende instructies.</string>
+    <string name="import_error_content_provider">Het selecteerde bestand kon niet automatisch geïmporteerd worden door AnkiDroid. Bekijk de gebruikershandleiding om te zien hoe je anki bestanden handmatig importeert: \n%s</string>
+    <string name="import_error_copy_file_to_cache">copyFileToCache() is mislukt (mogelijk uit gebrek aan opslagruimte)</string>
+    <string name="import_replacing">Collectie vervangen&#8230;</string>
+    <string name="import_interrupted">Importeren onderbroken</string>
+    <string name="export_include_schedule">Inclusief de planning</string>
+    <string name="export_include_media">Inclusief media</string>
+    <string name="confirm_apkg_export">Collectie exporteren als Anki-pakket?</string>
+    <string name="confirm_apkg_export_deck">\"%s\" als apkg-bestand exporteren?</string>
+    <string name="export_in_progress">Anki-pakketbestand exporteren&#8230;</string>
+    <string name="export_successful_title">Anki-pakket sturen?</string>
+    <string name="export_send_button">Verzenden</string>
+    <string name="export_save_button">Opslaan in bestand</string>
+    <string name="export_send_no_handlers">Geen applicaties beschikbaar om apkg te verwerken. Opslaan...</string>
+    <string name="export_save_apkg_successful">Anki-pakket succesvol opgeslagen</string>
+    <string name="export_save_apkg_unsuccessful">Opslaan Anki-pakket mislukt</string>
+    <string name="export_successful">Bestand \"%s\" is geëxporteerd. Wilt u het met een andere app versturen?</string>
+    <string name="export_email_subject">AnkiDroid geëxporteerde flashcards: %s</string>
+    <string name="export_email_text"><![CDATA[        Hallo!
+        <br/><br/>
+        Dot is een Anki flashcards deck verzonden vam <a href="https://ankidroid.org/docs/manual.html">AnkiDroid</a>.
+        Probeer het te openen met een van de beschikbare Anki distributies <a href="http://ankisrs.net/#download">Anki distributions</a> en geniet van makkelijk en efficiënt leren!
+        ]]>;
+    </string>
+    <string name="export_unsuccessful">Er is een fout opgetreden met het exporteren van de apkg file.</string>
+    <string name="import_hint">Om kaarten te importeren, plaats het apkg-bestand in map %s en klik ok</string>
+    <string name="upgrade_import_no_file_found">Geen %1$s bestand gevonden om te importeren</string>
+    <string name="study_options">Opties</string>
+    <string name="select_tts">TTS-taal instellen</string>
+    <string name="custom_study">Aangepast studeren</string>
+    <string name="more_options">Meer</string>
+    <string name="dyn_deck_desc">Dit is een speciale set bedoeld om buiten het normale schema te studeren. Kaarten keren onmiddellijk terug naar hun oorspronkelijke set nadat u hen herhaald heeft. Als u deze set verwijdert, keren alle overgebleven kaarten onmiddellijk terug naar hun oorspronkelijke set.</string>
+    <string name="steps_error">Aantal stappen moet hoger zijn dan 0</string>
+    <string name="steps_min_error">Ten minste één stap is vereist</string>
+    <string name="sched_end">(einde)</string>
+    <string name="sched_unbury_action">Om ze nu te zien kies \"opgraven\" in het menu</string>
+    <string name="sched_has_buried">Sommige gerelateerde of geblokkeerde kaarten zijn vertraagd tot een latere sessie.</string>
+    <string name="tag_editor_add_feedback">Druk op  “%2$s” om het toevoegen van “%1$s” te bevestigen</string>
+    <string name="tag_editor_add_feedback_existing">Bestaand label “%1$s” geselecteerd</string>
+    <string name="lookup_hint">Nadat de teks is gekopieerd, tikt u waar dan ook op de flitskaart om het zoekicoon weer te geven</string>
+    <!-- Time spans -->
+    <plurals name="time_span_seconds">
+        <item quantity="one">%s second</item>
+        <item quantity="other">%s seconden</item>
+    </plurals>
+    <plurals name="time_span_minutes">
+        <item quantity="one">%s minuut</item>
+        <item quantity="other">%s minuten</item>
+    </plurals>
+    <plurals name="time_span_hours">
+        <item quantity="one">%s uur</item>
+        <item quantity="other">%s uren</item>
+    </plurals>
+    <plurals name="time_span_days">
+        <item quantity="one">%s dag</item>
+        <item quantity="other">%s dagen</item>
+    </plurals>
+    <plurals name="time_span_months">
+        <item quantity="one">%s maand</item>
+        <item quantity="other">%s maanden</item>
+    </plurals>
+    <plurals name="time_span_years">
+        <item quantity="one">%s jaar</item>
+        <item quantity="other">%s jaren</item>
+    </plurals>
+    <!-- The reason for making a simple “< x” translatable are RTL
+         languages which apparently use the other symbol to mean less
+         than. -->
+    <string name="less_than_time">&lt; %s</string>
+    <string name="decks_rename_exists">Deze set bestaat al</string>
+    <string name="decks_rename_filtered_nosubdecks">Een gefilterde set kan geen subsets hebben</string>
+    <string name="filtered_deck_name">Gefilterde Set</string>
+    <string name="reminder_title">Vergeet niet om vandaag te studeren!</string>
+    <plurals name="reminder_text">
+        <item quantity="one">%2$d kaart in %1$s te herzien</item>
+        <item quantity="other">%2$d kaarten in %1$s te herzien</item>
+    </plurals>
+    <!-- Currently only used if exporting APKG fails -->
+    <string name="apk_share_error">Fout met het delen van de apkg bestand</string>
+    <!-- Import and export v2 feedback -->
+    <string name="import_needs_v2">V2-planner moet ingeschakeld zijn om dit bestand te importeren.</string>
+    <string name="import_cannot_with_v2">V2-planner kan geen V1-sets importeren met inbegrip van planningsinformatie.</string>
+    <string name="export_v2_dummy_note">Dit bestand vereist een nieuwere versie van Anki.</string>
+    <!-- Placed in a snackbar with a long URL. Limit the length and move the URL to the start of the string -->
+    <string name="activity_start_failed_load_url">Laden \'%s\' mislukt.</string>
+    <string name="activity_start_failed">Het systeem heeft geen app geïnstalleerd die deze actie kan uitvoeren.</string>
+    <string name="multimedia_editor_image_compression_failed"><![CDATA[Camera-afbeeldingen kunnen groot zijn. Het kan zijn dat u afbeeldingen wilt comprimeren & het formaat wilt wijzigen in de mediamap.]]></string>
+    <string name="no_browser_notification">Geen browser gevonden, bezoek de webpagina alstublieft via PC of mobiel:</string>
+    <string name="no_outgoing_link_in_cardbrowser">Externe paginalink in kaart wordt niet ondersteund.</string>
+    <!-- The name of the deck which corrupt cards will be moved to -->
+    <string name="check_integrity_recovered_deck_name">Herstelde Kaarten</string>
+    <!-- Deckpicker Background -->
+    <string name="background_image_title">Achtergrond</string>
+    <string name="choose_an_image">Kies een afbeelding</string>
+    <!-- Card Template Browser Appearance -->
+    <string name="restore_default">Herstel Standaardinstellingen</string>
+    <string name="reviewer_tts_cloze_spoken_replacement">Leeg</string>
+    <!-- in options menu & Navigation Drawer -->
+    <string name="ankidroid_turn_on_fullscreen_nav_drawer">Schakel schermvullende weergave in om Toon navigatiemenu te gebruiken met behulp van JavaScript.</string>
+    <string name="ankidroid_turn_on_fullscreen_options_menu">Schakel schermvullende weergave in om Toon optiesmenu te gebruiken met behulp van JavaScript.</string>
+    <!-- Whiteboard save image message in Reviewer -->
+    <string name="white_board_image_save_failed">Failed to save whiteboard image. %s</string>
+    <string name="white_board_image_saved">Whiteboard image saved to %s</string>
+    <string name="title_whiteboard_pen_color">Whiteboard pen color</string>
+    <!-- CSV/Note Import -->
+    <string name="note_importer_empty_cards_found"><![CDATA[Empty cards found. Please run Tools>Empty Cards.]]></string>
+    <string name="note_importer_error_empty_first_field">Empty first field: %s</string>
+    <string name="note_importer_error_first_field_matched">First field matched: %s</string>
+    <string name="note_importer_error_added_duplicate_first_field">Added duplicate with first field: %s</string>
+    <string name="note_importer_error_appeared_twice">Appeared twice in file: %s</string>
+    <string name="note_importer_error_empty_notes">One or more notes were not imported, because they didn\'t generate any cards. This can happen when you have empty fields or when you have not mapped the content in the text file to the correct fields</string>
+    <string name="csv_importer_error_invalid_field_count">‘%1$s’ had %2$d fields, expected %3$d</string>
+    <string name="csv_importer_error_exception">Aborted: %s</string>
+    <string name="user_is_a_robot">Detected automated test. If you are a human, contact AnkiDroid support</string>
+    <plurals name="note_importer_notes_added">
+        <item quantity="one">%d note added</item>
+        <item quantity="other">%d notes added</item>
+    </plurals>
+    <plurals name="note_importer_notes_updated">
+        <item quantity="one">%d note updated</item>
+        <item quantity="other">%d notes updated</item>
+    </plurals>
+    <plurals name="note_importer_notes_unchanged">
+        <item quantity="one">%d note unchanged</item>
+        <item quantity="other">%d notes unchanged</item>
+    </plurals>
+    <!-- JS api -->
+    <string name="api_version_developer_contact">This card uses unsupported AnkiDroid features. Contact developer %1$s, or view the wiki. %2$s</string>
+    <string name="invalid_json_data">Card provided invalid data. %s</string>
+    <string name="valid_js_api_version">Invalid AnkiDroid JS API version. Contact developer %s, or view wiki</string>
+    <string name="update_js_api_version">AnkiDroid JS API update available. Contact developer %s, or view wiki</string>
+    <string name="reviewer_invalid_api_version_visit_documentation">View</string>
+    <string name="anki_js_error_code">(Error Code: %d)</string>
+    <!-- About AnkiDroid screen -->
+    <string name="about_ankidroid_successfully_copied_debug">Copied debug information to clipboard</string>
+    <string name="about_ankidroid_error_copy_debug_info">Error copying debug information to clipboard</string>
+</resources>

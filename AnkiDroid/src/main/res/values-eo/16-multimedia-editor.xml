@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?> 
+ <!-- 
+ ~ Copyright (c) 2009 Andrew <andrewdubya@gmail> 
+ ~ Copyright (c) 2009 Edu Zamora <edu.zasu@gmail.com> 
+ ~ Copyright (c) 2009 Daniel Svaerd <daniel.svard@gmail.com> 
+ ~ Copyright (c) 2009 Nicolas Raoul <nicolas.raoul@gmail.com> 
+ ~ Copyright (c) 2010 Norbert Nagold <norbert.nagold@gmail.com> 
+ ~ This program is free software; you can redistribute it and/or modify it under 
+ ~ the terms of the GNU General Public License as published by the Free Software 
+ ~ Foundation; either version 3 of the License, or (at your option) any later 
+ ~ version. 
+ ~ 
+ ~ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+ ~ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ ~ PARTICULAR PURPOSE. See the GNU General Public License for more details. 
+ ~ 
+ ~ You should have received a copy of the GNU General Public License along with 
+ ~ this program.  If not, see <http://www.gnu.org/licenses/>. 
+ --> 
+ 
+<!--
+~ 	Zaur Molotnikov & Bibek Shrestha
+~ This program is free software; you can redistribute it and/or modify it under
+~ the terms of the GNU General Public License as published by the Free Software
+~ Foundation; either version 3 of the License, or (at your option) any later
+~ version.
+~
+~ This program is distributed in the hope that it will be useful, but WITHOUT ANY
+~ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+~ PARTICULAR PURPOSE. See the GNU General Public License for more details.
+~
+~ You should have received a copy of the GNU General Public License along with
+~ this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+    <!-- Main editor popup menu items -->
+    <string name="multimedia_editor_popup_image">Aldoni bildon</string>
+    <string name="multimedia_editor_popup_audio_clip">Aldoni aŭdaĵon</string>
+    <string name="multimedia_editor_popup_audio">Registri sonon</string>
+    <string name="multimedia_editor_popup_text">Altnivela redaktilo</string>
+    <string name="multimedia_editor_popup_cloze">Truteksta malpleno</string>
+    <!-- Translation activity (Glosbe) -->
+    <string name="multimedia_editor_trans_poweredglosbe">Povigata de glosbe.com</string>
+    <!-- these are like translate f r o m  and t o  some othe languages -->
+    <string name="multimedia_editor_trans_from">El</string>
+    <string name="multimedia_editor_trans_to">En</string>
+    <!-- imperative for the button title -->
+    <string name="multimedia_editor_trans_translate">Traduku</string>
+    <!-- waiting message -->
+    <string name="multimedia_editor_trans_translating_online">Traduki enrete</string>
+    <!-- pick the right translation imperative -->
+    <string name="multimedia_editor_trans_pick_translation">Elektu tradukon</string>
+    <!-- in controller when fails -->
+    <string name="multimedia_editor_trans_translation_failed">Traduko fiaskis</string>
+    <!-- from controller -->
+    <!-- dialog title to ask for translation source -->
+    <string name="multimedia_editor_trans_pick_translation_source">Elektu vortaron</string>
+    <!-- dialog asking to install ColorDict -->
+    <string name="multimedia_editor_trans_install_color_dict">Unue instalu ColorDict</string>
+    <!-- Pronunciation activity (Beolingus) -->
+    <string name="multimedia_editor_pron_load">Ŝuti</string>
+    <string name="multimedia_editor_pron_looking_up">Elserĉado de elparolo</string>
+    <!-- in controller when fails -->
+    <string name="multimedia_editor_pron_pronunciation_failed">Elparolo fiaskis</string>
+    <string name="multimedia_editor_word_search_try_lower_case">Provu uzi nur etliterojn</string>
+    <string name="multimedia_editor_poweredbeolingus">Povigata de Beolingus</string>
+    <!-- Field editing general -->
+    <!-- these are button names to convert field type -->
+    <string name="multimedia_editor_field_editing_text">Teksto</string>
+    <string name="multimedia_editor_field_editing_image">Bildo</string>
+    <string name="multimedia_editor_field_editing_audio">Aŭdaĵo</string>
+    <string name="multimedia_editor_field_editing_audio_clip">Sona dosiero</string>
+    <string name="multimedia_editor_field_editing_done">Farita</string>
+    <!-- Text field editing -->
+    <!-- buttons -->
+    <string name="multimedia_editor_text_field_editing_search_label">Serĉi:</string>
+    <string name="multimedia_editor_text_field_editing_show">Bildo</string>
+    <string name="multimedia_editor_text_field_editing_say">Elparolo</string>
+    <string name="multimedia_editor_text_field_editing_clear">Forviŝi</string>
+    <string name="multimedia_editor_text_field_editing_clone">Kopii de</string>
+    <string name="multimedia_editor_text_field_editing_translate">Traduko</string>
+    <!-- message to user, when there is no text or many words, but the user tries something -->
+    <string name="multimedia_editor_text_field_editing_no_text">Unue enigi iom da teksto</string>
+    <string name="multimedia_editor_text_field_editing_many_words">Vortaroj ordinare atendas unu vorton</string>
+    <!-- message when cloning -->
+    <string name="multimedia_editor_text_field_editing_clone_source">Transpreni de</string>
+    <!-- Multimedia card editor activity -->
+    <!-- for buttons -->
+    <!-- delete confirmation -->
+    <!-- Image editing -->
+    <!-- for buttons -->
+    <string name="multimedia_editor_image_field_editing_galery">Galerio</string>
+    <string name="multimedia_editor_image_field_editing_photo">Fotilo</string>
+    <string name="multimedia_editor_image_field_editing_library">Biblioteko</string>
+    <!-- General -->
+    <!-- message on the progress dialog for the user to wait, means process -->
+    <string name="multimedia_editor_general_downloading">Elŝutado</string>
+    <!-- when process finishes -->
+    <string name="multimedia_editor_general_done">Farita</string>
+    <!-- General word search and failures -->
+    <string name="multimedia_editor_error_word_not_found">Ne trovis vorton</string>
+    <!-- failure when contacting glosbe or similar -->
+    <string name="multimedia_editor_trans_getting_failure">Fiaskis akiri tradukon</string>
+    <string name="multimedia_editor_searching_word">Serĉado de la vorto</string>
+    <!-- General -->
+    <string name="multimedia_editor_progress_wait_title">Atendi</string>
+    <!-- not a good message, when an unexpected error happens -->
+    <string name="multimedia_editor_something_wrong">Io fiaskis</string>
+    <string name="multimedia_editor_attach_mm_content">Kunigi plurmedian enhavon al la kampo %1$s</string>
+    <string name="multimedia_editor_attach_media">Aldoni aŭdvidaĵon</string>
+    <!-- Audio view -->
+    <!-- Message when recording fails -->
+    <string name="multimedia_editor_audio_view_recording_failed">Fiaskis registri</string>
+    <string name="multimedia_editor_audio_view_playing_failed">Fiaskis ludi</string>
+    <string name="multimedia_editor_audio_view_create_failed">Ne povas krei ilarstrion de registrado</string>
+    <!-- Activity titles -->
+    <string name="title_activity_edit_text">Redakti kampon</string>
+    <string name="title_activity_translation">Traduko</string>
+    <string name="title_activity_load_pronounciation">Elparolo</string>
+    <!-- Network failure -->
+    <string name="network_no_connection">Senkonekte</string>
+    <!-- Crop function-->
+    <string name="crop_image">Ĉu vi volas pritondi tiun ĉi bildon?</string>
+    <string name="crop_button">Pritondi bildon</string>
+    <string name="save_dialog_content">La nuna limigo de grando de bildo estas %s MB. Implicita limigo de grando de bildo estas 1 MB. Ĉu vi volas pritondi ĝin?</string>
+    <string name="select_image_failed">"Fiaskis konservi bildon, reprovu"</string>
+    <string name="activity_result_unexpected">Aplikaĵo liveris neatenditan valoron. Eble vi uzu alian aplikaĵon</string>
+</resources>

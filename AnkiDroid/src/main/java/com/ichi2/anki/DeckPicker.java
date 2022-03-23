@@ -216,6 +216,7 @@ public class DeckPicker extends NavigationDrawerActivity implements
      * Since syncing closes the database, this flag allows us to avoid doing any
      * work in onResume that might use the database and go straight to syncing.
      */
+
     private boolean mSyncOnResume = false;
 
     /**

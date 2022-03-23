@@ -31,6 +31,7 @@
             android:title="@string/help"/>
         <item
             android:id="@+id/nav_feedback"
+            android:visible="false"
             android:icon="@drawable/ic_feedback_black_24dp"
             android:title="@string/send_feedback"/>
     </group>

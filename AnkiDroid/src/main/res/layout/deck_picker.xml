@@ -31,10 +31,9 @@
                 android:layout_weight="5"
                 android:layout_marginLeft="15dp"
                 android:hint="Search"
-                android:background="@color/white"
-                android:padding="10dp"
+                android:textColorHint="@color/white"
                 android:paddingLeft="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 />
 
             <ImageButton

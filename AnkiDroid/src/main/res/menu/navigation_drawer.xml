@@ -34,6 +34,11 @@
             android:icon="@drawable/ic_feedback_black_24dp"
             android:title="@string/send_feedback"/>
     </group>
+    <group>
+        <item android:id="@+id/profile_add"
+            android:title="@string/add_profile"
+            android:icon="@drawable/ic_add_white" />
+    </group>
        <!-- <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_feedback_black_24dp"

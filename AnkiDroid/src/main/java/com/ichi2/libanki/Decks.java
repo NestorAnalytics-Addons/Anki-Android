@@ -461,20 +461,14 @@ public class Decks {
 
     public void collapse(long did, boolean isChild) {
         Deck deck = get(did);
-        if(expanded==deck) {
-            deck.put("collapsed",true);
-            save(deck);
-            expanded=null;
-        }  else {
-            if (expanded != null && !isChild) {
-                expanded.put("collapsed", true);
-                save(expanded);
-            }
-            boolean isCollapsed = deck.getBoolean("collapsed");
-            expanded = isCollapsed ? deck : null;
-            deck.put("collapsed", !deck.getBoolean("collapsed"));
-            save(deck);
+        List<Deck> parents = parents(did);
+        Boolean newState = !deck.getBoolean("collapsed");
+        for (Map.Entry<Long, Deck> entry : mDecks.entrySet()) {
+            Deck deck1 = entry.getValue();
+            deck1.put("collapsed", !parents.contains(deck1));
         }
+        deck.put("collapsed",newState);
+        save();
     }
 
 

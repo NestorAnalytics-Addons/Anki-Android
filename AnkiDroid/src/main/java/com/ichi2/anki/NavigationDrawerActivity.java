@@ -23,6 +23,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.app.TaskStackBuilder;
 import androidx.core.content.ContextCompat;
@@ -36,15 +38,21 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.ichi2.anim.ActivityTransitionAnimation;
+import com.ichi2.anki.exception.StorageAccessException;
 import com.ichi2.anki.profile.ProfileAdapter;
 import com.ichi2.compat.CompatHelper;
 import com.ichi2.themes.Themes;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -129,7 +137,59 @@ public abstract class NavigationDrawerActivity extends AnkiActivity implements N
         };
 
         mDrawerLayout.addDrawerListener(mDrawerToggle);
+        initProfileMenuOptions();
     }
+
+    private void initProfileMenuOptions() {
+        List<String> profiles = CollectionHelper.getAnkiProfiles();
+        final boolean[] isSpinnerTouched = {false};
+        String currentProfile = getPreferences().getString(CollectionHelper.CURRENT_PROFILE_NAME, CollectionHelper.DEFAULT_PROFILE_NAME);
+        Spinner spinner = mNavigationView.getHeaderView(0).findViewById(R.id.spinner_profile);
+        spinner.setAdapter(new ArrayAdapter<>(this, R.layout.profile_spinner_layout, profiles));
+        spinner.setSelection(profiles.indexOf(currentProfile));
+        spinner.setOnTouchListener((v, event) -> {
+            isSpinnerTouched[0] = true;
+            return false;
+        });
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (!isSpinnerTouched[0]) {
+                    return;
+                }
+                switchProfile(profiles.get(position));
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+
+    private void switchProfile(String profile) {
+        try {
+            String path = CollectionHelper.createCustomProfileDirectory(profile);
+            CollectionHelper.initializeAnkiDroidDirectory(path);
+            getPreferences().edit().putString(CollectionHelper.PREF_DECK_PATH, path).apply();
+            getPreferences().edit().putString(CollectionHelper.CURRENT_PROFILE_NAME, profile).apply();
+            restartWithNewDeckPicker();
+        } catch (StorageAccessException e) {
+            String path = CollectionHelper.getDefaultAnkiDroidDirectory();
+            getPreferences().edit().putString(CollectionHelper.PREF_DECK_PATH, path).apply();
+        }
+        restartWithNewDeckPicker();
+    }
+
+
+    @SuppressWarnings("deprecation")
+    private void restartWithNewDeckPicker() {
+        // PERF: DB access on foreground thread
+        CollectionHelper.getInstance().closeCollection(true, "Preference Modification: collection path changed");
+        Intent deckPicker = new Intent(this, DeckPicker.class);
+        deckPicker.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(deckPicker);
+    }
+
 
 
     /**
@@ -327,6 +387,20 @@ public abstract class NavigationDrawerActivity extends AnkiActivity implements N
                 case R.id.nav_feedback:
                     Timber.i("Navigating to feedback");
                     openUrl(Uri.parse(AnkiDroidApp.getFeedbackUrl()));
+                    break;
+                case R.id.profile_add:
+                    View v = getLayoutInflater().inflate(R.layout.add_profile_dialog_layout, null);
+                    new MaterialDialog.Builder(this)
+                            .customView(v, false)
+                            .title("Create a new profile")
+                            .positiveText(R.string.dialog_ok)
+                            .negativeText("cancel")
+                            .onPositive((dialog, which) -> {
+                                String newProfile = ((EditText) v.findViewById(R.id.new_profile_et)).getText().toString();
+                                switchProfile(newProfile);
+                            })
+                            .onNegative((dialog, which) -> dialog.dismiss())
+                            .show();
                     break;
                /* case R.id.nav_profile:
                     // profile dialog box

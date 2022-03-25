@@ -33,6 +33,9 @@ import com.ichi2.utils.FileUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import androidx.annotation.VisibleForTesting;
 import timber.log.Timber;
@@ -48,6 +51,9 @@ public class CollectionHelper {
     private String mPath;
     // Name of anki2 file
     public static final String COLLECTION_FILENAME = "collection.anki2";
+    public static final String PREF_DECK_PATH = "deckPath";
+    public static final String CURRENT_PROFILE_NAME = "profile_name";
+    public static final String DEFAULT_PROFILE_NAME = "Default";
 
     /**
      * Prevents {@link com.ichi2.async.CollectionLoader} from spuriously re-opening the {@link Collection}.
@@ -211,7 +217,33 @@ public class CollectionHelper {
      * @return the folder path
      */
     public static String getDefaultAnkiDroidDirectory() {
-        return new File(Environment.getExternalStorageDirectory(), "AnkiDroid").getAbsolutePath();
+        return new File(Environment.getExternalStorageDirectory(), "AnkiDroid/Default").getAbsolutePath();
+    }
+
+
+    public static List<String> getAnkiProfiles() {
+        File ankiRoot = new File(Environment.getExternalStorageDirectory(), "AnkiDroid");
+        ArrayList<String> profile = new ArrayList<>();
+        if (ankiRoot.exists() && ankiRoot.canRead()) {
+            File[] files = ankiRoot.listFiles();
+            if (files != null) {
+                Arrays.sort(files, (o1, o2) -> (int) (o2.lastModified()-o1.lastModified()));
+                for(File file : files) {
+                    if (file.isDirectory()) {
+                        profile.add(file.getName());
+                    }
+                }
+            }
+        }
+        return profile;
+    }
+
+    public static String createCustomProfileDirectory(String profile) throws StorageAccessException {
+        if (profile.isEmpty()) {
+            throw new StorageAccessException("Invalid profile name");
+        } else {
+            return new File(Environment.getExternalStorageDirectory(), "AnkiDroid/" + profile).getAbsolutePath();
+        }
     }
 
     /**

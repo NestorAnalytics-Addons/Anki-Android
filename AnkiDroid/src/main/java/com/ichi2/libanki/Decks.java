@@ -144,6 +144,9 @@ public class Decks {
     private NameMap mNameMap;
     private boolean mChanged;
 
+    private Deck expanded;
+
+
     private static class NameMap {
         private final HashMap<String, Deck> mNameMap;
 
@@ -456,10 +459,22 @@ public class Decks {
     }
 
 
-    public void collpase(long did) {
+    public void collapse(long did, boolean isChild) {
         Deck deck = get(did);
-        deck.put("collapsed", !deck.getBoolean("collapsed"));
-        save(deck);
+        if(expanded==deck) {
+            deck.put("collapsed",true);
+            save(deck);
+            expanded=null;
+        }  else {
+            if (expanded != null && !isChild) {
+                expanded.put("collapsed", true);
+                save(expanded);
+            }
+            boolean isCollapsed = deck.getBoolean("collapsed");
+            expanded = isCollapsed ? deck : null;
+            deck.put("collapsed", !deck.getBoolean("collapsed"));
+            save(deck);
+        }
     }
 
 

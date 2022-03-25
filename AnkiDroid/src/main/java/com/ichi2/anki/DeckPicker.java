@@ -50,7 +50,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.annotation.VisibleForTesting;
-import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -111,6 +110,7 @@ import com.ichi2.async.TaskListenerWithContext;
 import com.ichi2.compat.CompatHelper;
 import com.ichi2.libanki.Collection;
 import com.ichi2.libanki.Consts;
+import com.ichi2.libanki.Deck;
 import com.ichi2.libanki.Decks;
 import com.ichi2.libanki.Model;
 import com.ichi2.libanki.Models;
@@ -229,6 +229,8 @@ public class DeckPicker extends NavigationDrawerActivity implements
     private boolean mClosedWelcomeMessage;
 
     private Time mTime = new SystemTime();
+    private Long expandedDeckKey = null;
+
 
     // ----------------------------------------------------------------------------
     // LISTENERS
@@ -237,7 +239,8 @@ public class DeckPicker extends NavigationDrawerActivity implements
     private final OnClickListener mDeckExpanderClickListener = view -> {
         Long did = (Long) view.getTag();
         if (getCol().getDecks().children(did).size() > 0) {
-            getCol().getDecks().collpase(did);
+            List<Deck> decks = getCol().getDecks().parents(did);
+            getCol().getDecks().collapse(did,!decks.isEmpty());
             __renderPage();
             dismissAllDialogFragments();
         }

@@ -62,6 +62,7 @@ public class CollectionHelper {
      */
     private boolean mCollectionLocked;
 
+
     @Nullable
     public static Long getCollectionSize(Context context) {
         try {
@@ -73,12 +74,17 @@ public class CollectionHelper {
         }
     }
 
+
     public synchronized void lockCollection() {
         mCollectionLocked = true;
     }
+
+
     public synchronized void unlockCollection() {
         mCollectionLocked = false;
     }
+
+
     public synchronized boolean isCollectionLocked() {
         return mCollectionLocked;
     }
@@ -93,6 +99,7 @@ public class CollectionHelper {
         public static CollectionHelper INSTANCE = new CollectionHelper();
     }
 
+
     /**
      * @return Singleton instance of the helper class
      */
@@ -103,6 +110,7 @@ public class CollectionHelper {
 
     /**
      * Get the single instance of the {@link Collection}, creating it if necessary  (lazy initialization).
+     *
      * @param context context which can be used to get the setting for the path to the Collection
      * @return instance of the Collection
      */
@@ -126,9 +134,11 @@ public class CollectionHelper {
         return mCollection;
     }
 
+
     /**
      * Call getCol(context) inside try / catch statement.
      * Send exception report and return null if there was an exception.
+     *
      * @param context
      * @return
      */
@@ -141,8 +151,10 @@ public class CollectionHelper {
         }
     }
 
+
     /**
      * Close the {@link Collection}, optionally saving
+     *
      * @param save whether or not save before closing
      */
     public synchronized void closeCollection(boolean save, String reason) {
@@ -152,6 +164,7 @@ public class CollectionHelper {
         }
     }
 
+
     /**
      * @return Whether or not {@link Collection} and its child database are open.
      */
@@ -160,19 +173,20 @@ public class CollectionHelper {
                 mCollection.getDb().getDatabase() != null && mCollection.getDb().getDatabase().isOpen();
     }
 
+
     /**
      * Create the AnkiDroid directory if it doesn't exist and add a .nomedia file to it if needed.
-     *
+     * <p>
      * The AnkiDroid directory is a user preference stored under the "deckPath" key, and a sensible
      * default is chosen if the preference hasn't been created yet (i.e., on the first run).
-     *
+     * <p>
      * The presence of a .nomedia file indicates to media scanners that the directory must be
      * excluded from their search. We need to include this to avoid media scanners including
      * media files from the collection.media directory. The .nomedia file works at the directory
      * level, so placing it in the AnkiDroid directory will ensure media scanners will also exclude
      * the collection.media sub-directory.
      *
-     * @param path  Directory to initialize
+     * @param path Directory to initialize
      * @throws StorageAccessException If no write access to directory
      */
     public static synchronized void initializeAnkiDroidDirectory(String path) throws StorageAccessException {
@@ -195,10 +209,29 @@ public class CollectionHelper {
         }
     }
 
+
+    public static boolean deleteProfile(String profile) {
+        File profileDir = new File(Environment.getExternalStorageDirectory(), "AnkiDroid/" + profile);
+        return deleteRecursive(profileDir);
+    }
+
+
+   private static boolean deleteRecursive(File fileOrDirectory) {
+        if (fileOrDirectory.isDirectory()) {
+            for (File child : fileOrDirectory.listFiles()) {
+                deleteRecursive(child);
+            }
+        }
+
+        return fileOrDirectory.delete();
+    }
+
+
     /**
      * Try to access the current AnkiDroid directory
-     * @return whether or not dir is accessible
+     *
      * @param context to get directory with
+     * @return whether or not dir is accessible
      */
     public static boolean isCurrentAnkiDroidDirAccessible(Context context) {
         try {
@@ -214,6 +247,7 @@ public class CollectionHelper {
      * Get the absolute path to a directory that is suitable to be the default starting location
      * for the AnkiDroid folder. This is a folder named "AnkiDroid" at the top level of the
      * external storage directory.
+     *
      * @return the folder path
      */
     public static String getDefaultAnkiDroidDirectory() {
@@ -227,8 +261,8 @@ public class CollectionHelper {
         if (ankiRoot.exists() && ankiRoot.canRead()) {
             File[] files = ankiRoot.listFiles();
             if (files != null) {
-                Arrays.sort(files, (o1, o2) -> (int) (o2.lastModified()-o1.lastModified()));
-                for(File file : files) {
+                Arrays.sort(files, (o1, o2) -> (int) (o2.lastModified() - o1.lastModified()));
+                for (File file : files) {
                     if (file.isDirectory()) {
                         profile.add(file.getName());
                     }
@@ -238,6 +272,7 @@ public class CollectionHelper {
         return profile;
     }
 
+
     public static String createCustomProfileDirectory(String profile) throws StorageAccessException {
         if (profile.isEmpty()) {
             throw new StorageAccessException("Invalid profile name");
@@ -246,8 +281,8 @@ public class CollectionHelper {
         }
     }
 
+
     /**
-     *
      * @return the path to the actual {@link Collection} file
      */
     public static String getCollectionPath(Context context) {
@@ -266,14 +301,17 @@ public class CollectionHelper {
                 CollectionHelper::getDefaultAnkiDroidDirectory);
     }
 
+
     /**
      * Get parent directory given the {@link Collection} path.
+     *
      * @param path path to AnkiDroid collection
      * @return path to AnkiDroid folder
      */
     private static String getParentDirectory(String path) {
         return new File(path).getParentFile().getAbsolutePath();
     }
+
 
     /**
      * This currently stores either:
@@ -292,11 +330,13 @@ public class CollectionHelper {
         @Nullable
         private final Long mFreeSpace;
 
+
         private CollectionIntegrityStorageCheck(long requiredSpace, long freeSpace) {
             this.mFreeSpace = freeSpace;
             this.mRequiredSpace = requiredSpace;
             this.mErrorMessage = null;
         }
+
 
         private CollectionIntegrityStorageCheck(@NonNull String errorMessage) {
             this.mRequiredSpace = null;
@@ -304,14 +344,17 @@ public class CollectionHelper {
             this.mErrorMessage = errorMessage;
         }
 
+
         private static CollectionIntegrityStorageCheck fromError(String errorMessage) {
             return new CollectionIntegrityStorageCheck(errorMessage);
         }
+
 
         private static String defaultRequiredFreeSpace(Context context) {
             long oneHundredFiftyMB = 150 * 1000 * 1000; //tested, 1024 displays 157MB. 1000 displays 150
             return Formatter.formatShortFileSize(context, oneHundredFiftyMB);
         }
+
 
         public static CollectionIntegrityStorageCheck createInstance(Context context) {
 
@@ -332,16 +375,18 @@ public class CollectionHelper {
 
             if (freeSpace == -1) {
                 Timber.w("Error obtaining free space for '%s'", collectionFile.getPath());
-                String readableFileSize  = Formatter.formatFileSize(context, requiredSpaceInBytes);
+                String readableFileSize = Formatter.formatFileSize(context, requiredSpaceInBytes);
                 return fromError(context.getResources().getString(R.string.integrity_check_insufficient_space, readableFileSize));
             }
 
             return new CollectionIntegrityStorageCheck(requiredSpaceInBytes, freeSpace);
         }
 
+
         public boolean shouldWarnOnIntegrityCheck() {
             return this.mErrorMessage != null || fileSystemDoesNotHaveSpaceForBackup();
         }
+
 
         private boolean fileSystemDoesNotHaveSpaceForBackup() {
             //only to be called when mErrorMessage == null
@@ -376,9 +421,11 @@ public class CollectionHelper {
         }
     }
 
-    /** Fetches additional collection data not required for
+
+    /**
+     * Fetches additional collection data not required for
      * application startup
-     *
+     * <p>
      * Allows mandatory startup procedures to return early, speeding up startup. Less important tasks are offloaded here
      * No-op if data is already fetched
      */

@@ -206,14 +206,33 @@ public class DeckAdapter extends RecyclerView.Adapter<DeckAdapter.ViewHolder> {
         }
         holder.deckLayout.setBackgroundResource(mRowCurrentDrawable);
         // Set background colour. The current deck has its own color
-        if (isCurrentlySelectedDeck(node)) {
-            holder.deckLayout.setBackgroundResource(mRowCurrentDrawable);
-            if (mPartiallyTransparentForBackground) {
-                setBackgroundAlpha(holder.deckLayout, SELECTED_DECK_ALPHA_AGAINST_BACKGROUND);
-            }
-        } else {
-            CompatHelper.getCompat().setSelectableBackground(holder.deckLayout);
+        int depth = node.getDepth();
+        if(depth%6 == 0){
+            holder.deckLayout.setBackgroundColor(Color.parseColor("#EEB4B4"));
         }
+        else if(depth%6 == 1){
+            holder.deckLayout.setBackgroundColor(Color.parseColor("#FA7241"));
+        }
+        else if(depth%6 == 2){
+            holder.deckLayout.setBackgroundColor(Color.parseColor("#FCB514"));
+        }
+        else if(depth%6 == 3){
+            holder.deckLayout.setBackgroundColor(Color.parseColor("#D2FF76"));
+        }
+        else if(depth%6 == 4){
+            holder.deckLayout.setBackgroundColor(Color.parseColor("#C9FFFD"));
+        }
+        else if(depth%6 == 5){
+            holder.deckLayout.setBackgroundColor(Color.parseColor("#A8ACFF"));
+        }
+//        if (isCurrentlySelectedDeck(node)) {
+//            holder.deckLayout.setBackgroundResource(mRowCurrentDrawable);
+//            if (mPartiallyTransparentForBackground) {
+//                setBackgroundAlpha(holder.deckLayout, SELECTED_DECK_ALPHA_AGAINST_BACKGROUND);
+//            }
+//        } else {
+//            CompatHelper.getCompat().setSelectableBackground(holder.deckLayout);
+//        }
         // Set deck name and colour. Filtered decks have their own colour
         holder.deckName.setText(node.getLastDeckNameComponent());
         Log.d("Deck Name", node.getLastDeckNameComponent());
@@ -223,11 +242,11 @@ public class DeckAdapter extends RecyclerView.Adapter<DeckAdapter.ViewHolder> {
             holder.deckName.setTextColor(mDeckNameDefaultColor);
         }
 
-        if (!check.isEmpty()) {
-            if (node.getLastDeckNameComponent().contains(check)) {
-                holder.deckLayout.setBackgroundColor(R.color.material_yellow_500);
-            }
-        }
+//        if (!check.isEmpty()) {
+//            if (node.getLastDeckNameComponent().contains(check)) {
+//                holder.deckLayout.setBackgroundColor(R.color.material_yellow_500);
+//            }
+//        }
         // Set the card counts and their colors
         holder.deckNew.setText(String.valueOf(node.getNewCount()));
         holder.deckNew.setTextColor((node.getNewCount() == 0) ? mZeroCountColor : mNewCountColor);

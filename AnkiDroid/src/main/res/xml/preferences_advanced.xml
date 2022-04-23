@@ -27,21 +27,25 @@
     android:summary="@string/pref_cat_advanced_summ"
     android:key="pref_screen_advanced">
         <EditTextPreference
-            android:defaultValue="/sdcard/AnkiDroid/Default"
+            android:defaultValue="/sdcard/Nestor/Default"
             android:key="deckPath"
+            android:enabled="false"
             android:summary="@string/preference_summary_literal"
             android:title="@string/col_path" />
         <com.ichi2.ui.ConfirmationPreference
             android:key="force_full_sync"
+            android:enabled="false"
             android:title="@string/force_full_sync_title"
             android:summary="@string/force_full_sync_summary" />
         <Preference
+            android:enabled="false"
             android:key="custom_sync_server_link"
             android:title="@string/custom_sync_server_title"/>
         <PreferenceCategory android:title="@string/pref_cat_performance" >
             <com.ichi2.ui.SeekBarPreference
                 android:defaultValue="8"
                 android:key="backupMax"
+                android:enabled="false"
                 android:max="10"
                 android:summary="@string/preference_summary_literal"
                 android:text=""

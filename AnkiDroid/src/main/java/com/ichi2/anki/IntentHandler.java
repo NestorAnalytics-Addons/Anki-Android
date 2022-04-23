@@ -2,10 +2,12 @@ package com.ichi2.anki;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Message;
 
 import com.ichi2.anki.dialogs.DialogHandler;
+import com.ichi2.anki.exception.StorageAccessException;
 import com.ichi2.anki.services.ReminderService;
 import com.ichi2.utils.FunctionalInterfaces.Consumer;
 import com.ichi2.utils.ImportUtils;
@@ -19,9 +21,8 @@ import timber.log.Timber;
 /**
  * Class which handles how the application responds to different intents, forcing it to always be single task,
  * but allowing custom behavior depending on the intent
- * 
- * @author Tim
  *
+ * @author Tim
  */
 
 public class IntentHandler extends Activity {
@@ -54,17 +55,23 @@ public class IntentHandler extends Activity {
                 Timber.d("onCreate() performing default action");
                 launchDeckPickerIfNoOtherTasks(reloadIntent);
                 break;
+            case DISPLAY_DECKS:
+                Timber.d("Launching with profile");
+                handleDisplayDecksIntent(reloadIntent);
+                break;
             default:
                 Timber.w("Unknown launch type: %s. Performing default action", launchType);
                 launchDeckPickerIfNoOtherTasks(reloadIntent);
         }
     }
 
+
     private static boolean isValidViewIntent(@NonNull Intent intent) {
         // Negating a negative because we want to call specific attention to the fact that it's invalid
         // #6312 - Smart Launcher provided an empty ACTION_VIEW, no point in importing here.
         return !ImportUtils.isInvalidViewIntent(intent);
     }
+
 
     @VisibleForTesting
     @CheckResult
@@ -76,6 +83,8 @@ public class IntentHandler extends Activity {
             return LaunchType.SYNC;
         } else if (intent.hasExtra(ReminderService.EXTRA_DECK_ID)) {
             return LaunchType.REVIEW;
+        } else if ("com.ichi2.anki.DISPLAY_DECKS".equals(action)) {
+            return LaunchType.DISPLAY_DECKS;
         } else {
             return LaunchType.DEFAULT_START_APP_IF_NEW;
         }
@@ -148,6 +157,38 @@ public class IntentHandler extends Activity {
     }
 
 
+    private void handleDisplayDecksIntent(Intent reloadIntent) {
+        Timber.i("Launching DeckPicker");
+        String profileName = getIntent().getStringExtra("PROFILE_NAME");
+        switchProfile(profileName);
+        String deckName = getIntent().getStringExtra("DECK_NAME");
+        reloadIntent.setAction("DISPLAY_DECKS");
+        reloadIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        reloadIntent.putExtra("DECK_NAME", deckName);
+        reloadIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivityIfNeeded(reloadIntent, 0);
+        finish();
+    }
+
+
+    private void switchProfile(String profile) {
+        try {
+            String path = CollectionHelper.createCustomProfileDirectory(profile);
+            CollectionHelper.initializeAnkiDroidDirectory(path);
+            getPreferences().edit().putString(CollectionHelper.PREF_DECK_PATH, path).apply();
+            getPreferences().edit().putString(CollectionHelper.CURRENT_PROFILE_NAME, profile).apply();
+        } catch (StorageAccessException e) {
+            String path = CollectionHelper.getDefaultAnkiDroidDirectory();
+            getPreferences().edit().putString(CollectionHelper.PREF_DECK_PATH, path).apply();
+        }
+    }
+
+
+    private SharedPreferences getPreferences() {
+        return AnkiDroidApp.getSharedPrefs(IntentHandler.this);
+    }
+
+
     /**
      * Send a Message to AnkiDroidApp so that the DialogMessageHandler forces a sync
      */
@@ -159,12 +200,14 @@ public class IntentHandler extends Activity {
         DialogHandler.storeMessage(handlerMessage);
     }
 
+
     //COULD_BE_BETTER: Also extract the parameters into here to reduce coupling
     @VisibleForTesting
     enum LaunchType {
         DEFAULT_START_APP_IF_NEW,
         FILE_IMPORT,
         SYNC,
-        REVIEW
+        REVIEW,
+        DISPLAY_DECKS
     }
 }

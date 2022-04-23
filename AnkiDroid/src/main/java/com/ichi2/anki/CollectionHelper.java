@@ -54,6 +54,7 @@ public class CollectionHelper {
     public static final String PREF_DECK_PATH = "deckPath";
     public static final String CURRENT_PROFILE_NAME = "profile_name";
     public static final String DEFAULT_PROFILE_NAME = "Default";
+    public static final String ANKI_ROOT = "Nestor";
 
     /**
      * Prevents {@link com.ichi2.async.CollectionLoader} from spuriously re-opening the {@link Collection}.
@@ -211,12 +212,12 @@ public class CollectionHelper {
 
 
     public static boolean deleteProfile(String profile) {
-        File profileDir = new File(Environment.getExternalStorageDirectory(), "AnkiDroid/" + profile);
+        File profileDir = new File(Environment.getExternalStorageDirectory(), ANKI_ROOT + "/" + profile);
         return deleteRecursive(profileDir);
     }
 
 
-   private static boolean deleteRecursive(File fileOrDirectory) {
+    private static boolean deleteRecursive(File fileOrDirectory) {
         if (fileOrDirectory.isDirectory()) {
             for (File child : fileOrDirectory.listFiles()) {
                 deleteRecursive(child);
@@ -251,12 +252,12 @@ public class CollectionHelper {
      * @return the folder path
      */
     public static String getDefaultAnkiDroidDirectory() {
-        return new File(Environment.getExternalStorageDirectory(), "AnkiDroid/Default").getAbsolutePath();
+        return new File(Environment.getExternalStorageDirectory(), ANKI_ROOT + "/Default").getAbsolutePath();
     }
 
 
     public static List<String> getAnkiProfiles() {
-        File ankiRoot = new File(Environment.getExternalStorageDirectory(), "AnkiDroid");
+        File ankiRoot = new File(Environment.getExternalStorageDirectory(), ANKI_ROOT);
         ArrayList<String> profile = new ArrayList<>();
         if (ankiRoot.exists() && ankiRoot.canRead()) {
             File[] files = ankiRoot.listFiles();
@@ -277,7 +278,7 @@ public class CollectionHelper {
         if (profile.isEmpty()) {
             throw new StorageAccessException("Invalid profile name");
         } else {
-            return new File(Environment.getExternalStorageDirectory(), "AnkiDroid/" + profile).getAbsolutePath();
+            return new File(Environment.getExternalStorageDirectory(), ANKI_ROOT + "/" + profile).getAbsolutePath();
         }
     }
 

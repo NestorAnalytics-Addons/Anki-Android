@@ -59,10 +59,21 @@ public class IntentHandler extends Activity {
                 Timber.d("Launching with profile");
                 handleDisplayDecksIntent(reloadIntent);
                 break;
+            case LOAD_PROFILE:
+                Timber.d("Launching with profile");
+                handleLoadProfileIntent(reloadIntent);
+                break;
             default:
                 Timber.w("Unknown launch type: %s. Performing default action", launchType);
                 launchDeckPickerIfNoOtherTasks(reloadIntent);
         }
+    }
+
+
+    private void handleLoadProfileIntent(Intent reloadIntent) {
+        String profileName = getIntent().getStringExtra("PROFILE_NAME");
+        switchProfile(profileName);
+        launchDeckPickerIfNoOtherTasks(reloadIntent);
     }
 
 
@@ -83,6 +94,8 @@ public class IntentHandler extends Activity {
             return LaunchType.SYNC;
         } else if (intent.hasExtra(ReminderService.EXTRA_DECK_ID)) {
             return LaunchType.REVIEW;
+        } else if ("com.ichi2.anki.LOAD_PROFILE".equals(action)) {
+            return LaunchType.LOAD_PROFILE;
         } else if ("com.ichi2.anki.DISPLAY_DECKS".equals(action)) {
             return LaunchType.DISPLAY_DECKS;
         } else {
@@ -208,6 +221,7 @@ public class IntentHandler extends Activity {
         FILE_IMPORT,
         SYNC,
         REVIEW,
-        DISPLAY_DECKS
+        DISPLAY_DECKS,
+        LOAD_PROFILE
     }
 }

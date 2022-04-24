@@ -2,10 +2,12 @@ package com.ichi2.anki;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Message;
 
 import com.ichi2.anki.dialogs.DialogHandler;
+import com.ichi2.anki.exception.StorageAccessException;
 import com.ichi2.anki.services.ReminderService;
 import com.ichi2.utils.FunctionalInterfaces.Consumer;
 import com.ichi2.utils.ImportUtils;
@@ -54,11 +56,39 @@ public class IntentHandler extends Activity {
                 Timber.d("onCreate() performing default action");
                 launchDeckPickerIfNoOtherTasks(reloadIntent);
                 break;
+            case LOAD_PROFILE:
+                Timber.d("Launching with profile");
+                handleLoadProfileIntent(reloadIntent);
+                break;
             default:
                 Timber.w("Unknown launch type: %s. Performing default action", launchType);
                 launchDeckPickerIfNoOtherTasks(reloadIntent);
         }
     }
+
+
+    private void handleLoadProfileIntent(Intent reloadIntent) {
+        String profileName = getIntent().getStringExtra("PROFILE_NAME");
+        switchProfile(profileName);
+        launchDeckPickerIfNoOtherTasks(reloadIntent);
+    }
+
+    private void switchProfile(String profile) {
+        try {
+            String path = CollectionHelper.createCustomProfileDirectory(profile);
+            CollectionHelper.initializeAnkiDroidDirectory(path);
+            getPreferences().edit().putString(CollectionHelper.PREF_DECK_PATH, path).apply();
+            getPreferences().edit().putString(CollectionHelper.CURRENT_PROFILE_NAME, profile).apply();
+        } catch (StorageAccessException e) {
+            String path = CollectionHelper.getDefaultAnkiDroidDirectory();
+            getPreferences().edit().putString(CollectionHelper.PREF_DECK_PATH, path).apply();
+        }
+    }
+    private SharedPreferences getPreferences() {
+        return AnkiDroidApp.getSharedPrefs(IntentHandler.this);
+    }
+
+
 
     private static boolean isValidViewIntent(@NonNull Intent intent) {
         // Negating a negative because we want to call specific attention to the fact that it's invalid
@@ -74,7 +104,9 @@ public class IntentHandler extends Activity {
             return LaunchType.FILE_IMPORT;
         } else if ("com.ichi2.anki.DO_SYNC".equals(action)) {
             return LaunchType.SYNC;
-        } else if (intent.hasExtra(ReminderService.EXTRA_DECK_ID)) {
+        } else if("com.ichi2.anki.LOAD_PROFILE".equals(action)) {
+            return LaunchType.LOAD_PROFILE;
+        }else if (intent.hasExtra(ReminderService.EXTRA_DECK_ID)) {
             return LaunchType.REVIEW;
         } else {
             return LaunchType.DEFAULT_START_APP_IF_NEW;
@@ -165,6 +197,8 @@ public class IntentHandler extends Activity {
         DEFAULT_START_APP_IF_NEW,
         FILE_IMPORT,
         SYNC,
-        REVIEW
+        REVIEW,
+        DISPLAY_DECKS,
+        LOAD_PROFILE
     }
 }
